@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - healer
+  - Enemy
+  - Boss
+  - PointsStay
   layers:
   - Default
   - TransparentFX

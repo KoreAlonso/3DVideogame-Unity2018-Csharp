@@ -63,7 +63,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Bar.cs" />
     <Compile Include="Assets\Scripts\GetInputs.cs" />
-    <Compile Include="Assets\Scripts\Navigation.cs" />
+    <Compile Include="Assets\Scripts\NavigationBoss.cs" />
+    <Compile Include="Assets\Scripts\NavigationEnemy.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Bebea/Desktop/Unity/FinalProyect/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

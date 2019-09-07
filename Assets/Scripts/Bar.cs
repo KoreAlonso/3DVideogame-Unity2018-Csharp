@@ -22,7 +22,7 @@ public class Bar : MonoBehaviour {
 	void Update () {
 
         increase();
-        Debug.Log(currentValue);
+       
      
 	}
     
@@ -33,7 +33,7 @@ public class Bar : MonoBehaviour {
         }
         else
         {
-            currentValue = currentValue ;
+            currentValue = currentValue;
         }
         slider.value = currentValue;
         return currentValue; 
