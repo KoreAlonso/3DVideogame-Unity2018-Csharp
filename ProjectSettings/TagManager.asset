@@ -8,6 +8,10 @@ TagManager:
   - Enemy
   - Boss
   - PointsStay
+  - energySlider
+  - lifeSlider
+  - dmg
+  - shotDmg
   layers:
   - Default
   - TransparentFX

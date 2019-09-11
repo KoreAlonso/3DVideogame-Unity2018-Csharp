@@ -32,8 +32,8 @@ public class NavigationBoss : MonoBehaviour
     {
        
         boss.destination = randomDirection;
-        //Debug.Log(randomDirection );
-        Debug.Log("me muevo");
+       
+        
 
         if (boss.transform.position.x == boss.destination.x && boss.transform.position.z == boss.destination.z)
         {
@@ -52,14 +52,14 @@ public class NavigationBoss : MonoBehaviour
          {
             Vector3 stopBoss = Vector3.zero;
              boss.destination = stopBoss;
-             Debug.Log("estoy en point stop" + currentCount);
+             
 
 
         }
         if (currentCount == maxCount)
              {
                  randomDirection = new Vector3(Random.Range(0, 100), 0, Random.Range(0, 100));
-                 Debug.Log("point stop, nueva direccion");
+                 
                  currentCount = startCount;
              }
         
@@ -72,7 +72,7 @@ public class NavigationBoss : MonoBehaviour
         if( currentCount < maxCount)
         {
             currentCount += Time.deltaTime;
-            Debug.Log("estoy en counter, tiempo actual = " + currentCount);
+           
         }
         else
         {

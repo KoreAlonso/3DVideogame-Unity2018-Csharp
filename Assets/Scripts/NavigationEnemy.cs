@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//poner velocidad. 
+ 
 //que siempre mire al personaje.
 public class NavigationEnemy : MonoBehaviour {
 
@@ -11,36 +11,62 @@ public class NavigationEnemy : MonoBehaviour {
 
     Vector3 direction;
     public Vector3 maxDistance;
-    public float minRangeDistance = 10;
-    Transform samuraiPosition;
+    public float maxRangeDistance = 50;
+    Transform samuraiTransform;
+    
+
+   public LayerMask player;
 
     void Start()
     {
         enemy = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        samuraiPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        samuraiTransform = GameObject.FindGameObjectWithTag("Player").transform;
         maxDistance = new Vector3(2.5f, 0, 2.5f);
+        player = LayerMask.GetMask("Player");
+
     }
 
     // Update is called once per frame
     void Update()
     {
         persecute();
+        isHitPlayer();
+        Debug.Log(isHitPlayer());
+        
     }
 
 
     void persecute()
-    {
+    {   
         direction = enemy.destination;
 
-        if (Vector3.Distance(direction, samuraiPosition.position) > minRangeDistance)
+        if (Vector3.Distance(enemy.transform.position, samuraiTransform.position) < maxRangeDistance)
         {
            
-            direction = samuraiPosition.position - maxDistance;
-           // samuraiPosition.LookAt (direction);
+            enemy.transform.LookAt(samuraiTransform);
+            direction = samuraiTransform.position;
+            
+            
             enemy.destination = direction;
+            
+        }
+
         
-        } 
     }
+
+    public bool isHitPlayer()
+    {
+        if( Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), 10, player))
+        {
+            return true;
+        }
+        else {
+
+            return false;
+        }
+        
+    }
+   
 }
 
 

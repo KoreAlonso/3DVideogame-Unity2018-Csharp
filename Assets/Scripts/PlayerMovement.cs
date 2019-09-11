@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     CharacterController samurai;
     float velocity = 4;
     float dashVelocity = 25;
-    float rotateVelocity = 5;
+    float rotateVelocity = 1;
  
 
     //Variable para acceder a la Clase GetInputs
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     //Variables método Timer();
     float currentDashTime;
     float maxDashTime = 0.3f;
-    
+    float dashCost = 8.5f;
     void Start()
     {
         //Obtengo instancias
@@ -62,9 +62,15 @@ public class PlayerMovement : MonoBehaviour {
 
     //encargado del movimiento Dash
    void dash()
-    {   
+    {
+
+        if (Input.GetKeyDown(KeyCode.Space)){ 
+
+            EnergyBar.sharedInstance.decrease(dashCost);
+        }
         if (Input.GetKey(KeyCode.Space))
             {
+            
               if(timerDash() < maxDashTime)
               { 
                 timerDash();
