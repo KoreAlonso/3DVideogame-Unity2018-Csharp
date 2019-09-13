@@ -31,18 +31,13 @@ public class NavigationBoss : MonoBehaviour
     void bossMovement()
     {
        
-        boss.destination = randomDirection;
-       
-        
+        boss.destination = randomDirection; 
 
         if (boss.transform.position.x == boss.destination.x && boss.transform.position.z == boss.destination.z)
         {
-            Debug.Log("llamo a point stop");
             pointStop();
 
         }
-        
-
     }
 
     void pointStop()

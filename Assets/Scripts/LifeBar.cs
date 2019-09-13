@@ -10,21 +10,37 @@ public class LifeBar : MonoBehaviour {
     float minLife = -2;
     float shieldValue = 17;
 
+    public static LifeBar sharedInstand;
     Slider slider;
 
 	void Start () {
         slider = this.GetComponent<Slider>();
         currentLife = maxLife;
+        sharedInstand = this;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         slider.value = currentLife;
+        
 	}
 
-    void decreaseLife()
+    public  float decreaseLife( float damage)
     {
-        //con tipo de daño recibido, restar vida. 
+        if (currentLife - damage > minLife)
+        {
+            if (currentLife - damage <= minLife)
+            {
+                //aqui se acaba el juego,  se acabo su vida. 
+            }
+
+            currentLife -= damage * Time.deltaTime;
+            slider.value = currentLife;
+
+        }
+       
+        return currentLife;
+        
     }
 
     void increaseLife()

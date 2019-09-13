@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
- 
-//que siempre mire al personaje.
 public class NavigationEnemy : MonoBehaviour {
 
     UnityEngine.AI.NavMeshAgent enemy;
@@ -54,11 +51,13 @@ public class NavigationEnemy : MonoBehaviour {
         
     }
 
-    public bool isHitPlayer()
+    public bool isHitPlayer() 
     {
         if( Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), 10, player))
         {
-            return true;
+            
+           return true;
+
         }
         else {
 
