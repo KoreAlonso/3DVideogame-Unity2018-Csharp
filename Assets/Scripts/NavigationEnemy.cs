@@ -47,8 +47,6 @@ public class NavigationEnemy : MonoBehaviour {
             enemy.destination = direction;
             
         }
-
-        
     }
 
     public bool isHitPlayer() 

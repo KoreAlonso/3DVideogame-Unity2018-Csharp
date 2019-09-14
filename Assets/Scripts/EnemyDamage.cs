@@ -24,64 +24,46 @@ public class EnemyDamage : MonoBehaviour {
         bullet = GameObject.FindGameObjectWithTag("shotDmg").GetComponent<Rigidbody>();
     }
 
-  
     void Update() {
-
-        shoot();
+        StartCoroutine(shooting());
+     
         Debug.Log(cloneBullet);
-    }
-
-    void shoot()
-    {
-        if(navigationEnemy.isHitPlayer().Equals(true) ) {
-
-            StartCoroutine(shooting());
-
-        }
-        else
-        {
-            StopCoroutine(shooting());
-        }
-
     }
 
     public IEnumerator shooting()
     {
+        while (navigationEnemy.isHitPlayer().Equals(true))
+        { 
+            
+                instanciate();
+            cloneBullet.AddRelativeForce(transform.TransformDirection(Vector3.forward *5)  , ForceMode.Impulse);
+               
+
+          yield return new WaitForSeconds(20f);
+        }   
+    }
+
+    void instanciate()
+        {
+
         Vector3 height = new Vector3(0, 1f, 0);
         shootStart = dmgEnemy.transform.position + height;
         ray = new Ray(shootStart, dmgEnemy.transform.forward);
         Debug.DrawRay(shootStart, dmgEnemy.transform.forward,Color.red);
-        
-         
-        /*if (Physics.SphereCast(shootStart, 1f, transform.forward, out hit, 200))*/
-        while (Physics.SphereCast(ray, 1f, 10f, player)){ 
-                {
 
-                instanciate();
-                cloneBullet.velocity = transform.TransformDirection(Vector3.forward) * 1;
-                //LifeBar.sharedInstand.decreaseLife(costDamage);
-
-            }
-          yield return new WaitForSeconds(20f);
-        }
-
-       
-    }
-    void instanciate()
-        {Debug.Log("hola");
         Quaternion rotation = new Quaternion(0, 0, 0, 0);
         if (cloneBullet == null)
-        {
-        
-            cloneBullet = Instantiate(bullet, shootStart, rotation, dmgEnemy);
-            
-            Destroy(cloneBullet, 7f);
-           
-        }
-        
+            {
+                cloneBullet = Instantiate(bullet, shootStart, rotation, dmgEnemy);
+               // Destroy(cloneBullet.gameObject, 1.5f);
+           // LifeBar.sharedInstand.decreaseLife(costDamage);
+            }
+    }
 
+   
+           
     }
         
 
  
-}
+
