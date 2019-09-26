@@ -51,7 +51,8 @@ public class NavigationEnemy : MonoBehaviour {
 
     public bool isHitPlayer() 
     {
-        if( Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), 10, player))
+        Debug.DrawRay(this.transform.position, transform.TransformDirection(Vector3.forward * 10), Color.cyan);
+        if ( Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), 10, player))
         {
             
            return true;
@@ -63,7 +64,25 @@ public class NavigationEnemy : MonoBehaviour {
         }
         
     }
-   
+
+    //NO BORRAR metodo encargado de devolver si hay un traidor cerca o no. Cambiar layerMask. 
+   /* public bool isHitTraitors()
+    {
+        Debug.DrawRay(this.transform.position, transform.TransformDirection(Vector3.forward * 10), Color.cyan);
+        if (Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.one), 10, /*traitors*))
+        {
+
+            return true;
+
+        }
+        else
+        {
+
+            return false;
+        }
+
+    }*/
+
 }
 
 

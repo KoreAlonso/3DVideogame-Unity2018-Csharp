@@ -12,6 +12,9 @@ TagManager:
   - lifeSlider
   - dmg
   - shotDmg
+  - CloneBullet
+  - PointSpawn
+  - Bullets
   layers:
   - Default
   - TransparentFX
