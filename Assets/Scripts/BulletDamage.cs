@@ -8,6 +8,7 @@ public class BulletDamage : MonoBehaviour {
     {
         Debug.Log("collision");
         Destroy(this.gameObject);
+       
         
     }
 }

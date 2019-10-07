@@ -10,22 +10,25 @@ public class EnemyShot : MonoBehaviour {
     float currentCount;
 
     Transform pointSpawn;
-    public Rigidbody bullet;
+    public Rigidbody spell;
     Rigidbody cloneBullet;
 
     NavigationEnemy navEnemy;
+    
 
     void Start() {
         
 
         navEnemy = FindObjectOfType<NavigationEnemy>();
-        pointSpawn = GameObject.FindGameObjectWithTag("PointSpawn").GetComponent<Transform>();
+        
+        pointSpawn = this.transform.Find("PointSpawnBullet");
         currentCount = minCount; 
     }
 
     void Update() {
 
         bulletInstanciate();
+        
         counter();
     }
 
@@ -34,15 +37,15 @@ public class EnemyShot : MonoBehaviour {
     {
         Quaternion rotation = new Quaternion(0, 0, 0, 0);
 
-        if ( navEnemy.isHitPlayer() /*|| navEnemy.isHitTraitors()*/ == true &&  currentCount == minCount)
+        if ( navEnemy.isMinionHitting() /*|| navEnemy.isHitTraitors()*/ == true &&  currentCount == minCount)
         {
-            cloneBullet = Instantiate(bullet,pointSpawn.position, rotation);
+            cloneBullet = Instantiate(spell,pointSpawn.position, rotation);
             cloneBullet.AddForce(transform.TransformDirection(new Vector3(0f ,3.3f,22f) )  , ForceMode.Impulse);
-            bullet.GetComponent<MeshRenderer>().enabled = true;
-        }
-        
+            spell.GetComponent<MeshRenderer>().enabled = true;
+        }  
       
     }
+   
 
     float counter()
     {
