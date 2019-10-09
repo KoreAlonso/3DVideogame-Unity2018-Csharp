@@ -61,8 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BossDetect.cs" />
-    <Compile Include="Assets\Scripts\BulletDamage.cs" />
+    <Compile Include="Assets\Scripts\BossDamage.cs" />
+    <Compile Include="Assets\Scripts\BossShot.cs" />
+    <Compile Include="Assets\Scripts\BossSpawn.cs" />
+    <Compile Include="Assets\Scripts\EnemyDamage.cs" />
     <Compile Include="Assets\Scripts\EnemyShot.cs" />
     <Compile Include="Assets\Scripts\EnergyBar.cs" />
     <Compile Include="Assets\Scripts\GetInputs.cs" />

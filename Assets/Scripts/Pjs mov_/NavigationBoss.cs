@@ -48,7 +48,7 @@ public class NavigationBoss : MonoBehaviour
         if(currentCount < maxCount)
         {
              stopBoss = Vector3.zero;
-             boss.destination = stopBoss;
+             boss.destination = stopBoss;            
             isBossStop = true;
         }
 
