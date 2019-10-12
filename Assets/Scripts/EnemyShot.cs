@@ -16,19 +16,17 @@ public class EnemyShot : MonoBehaviour {
     NavigationEnemy navEnemy;
     
 
-    void Start() {
-        
-
+    void Start()
+    {
         navEnemy = FindObjectOfType<NavigationEnemy>();
         
         pointSpawn = this.transform.Find("PointSpawnBullet");
         currentCount = minCount; 
     }
 
-    void Update() {
-
+    void Update()
+    {
         bulletInstanciate();
-        
         counter();
     }
 
@@ -40,10 +38,9 @@ public class EnemyShot : MonoBehaviour {
         if ( navEnemy.isMinionHitting() /*|| navEnemy.isHitTraitors()*/ == true &&  currentCount == minCount)
         {
             cloneBullet = Instantiate(spell,pointSpawn.position, rotation);
-            cloneBullet.AddForce(transform.TransformDirection(new Vector3(0f ,3.3f,22f) )  , ForceMode.Impulse);
+            cloneBullet.AddForce(transform.TransformDirection(new Vector3(0f ,3.3f,22f)), ForceMode.Impulse);
             spell.GetComponent<MeshRenderer>().enabled = true;
         }  
-      
     }
    
 
@@ -63,7 +60,6 @@ public class EnemyShot : MonoBehaviour {
 
          currentCount = minCount;
         }
-
         return currentCount;
     }
 

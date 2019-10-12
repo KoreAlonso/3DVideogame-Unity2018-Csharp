@@ -31,17 +31,12 @@ public class PlayerMovement : MonoBehaviour {
     {
         rotate();
         dash();
-        movementDirection();
+        movement();
     }
 
-    //método que recibe un Vector3. Se encarga de aplicar un SimpleMove (dependiente de la anterior variable) al CharacterController 
-     void movement(Vector3  inputDirection)
-    {
-        samurai.SimpleMove(inputDirection);
-    }
 
     //encargado del movimiento continuo
-    void movementDirection()
+    void movement()
     { 
         if (inputs.getHorizontal() != 0 || inputs.getVertical() != 0)
         {  
@@ -50,7 +45,7 @@ public class PlayerMovement : MonoBehaviour {
           samuraiMovement = transform.TransformDirection(samuraiMovement);
 
             //se llama al método movement (Vector3 * float)
-          movement(samuraiMovement * velocity);  
+          samurai.SimpleMove(samuraiMovement * velocity);  
         }
     }
 
@@ -63,14 +58,12 @@ public class PlayerMovement : MonoBehaviour {
     //encargado del movimiento Dash
    void dash()
     {
-
         if (Input.GetKeyDown(KeyCode.Space)){ 
 
             EnergyBar.sharedInstance.decrease(dashCost);
         }
         if (Input.GetKey(KeyCode.Space))
             {
-            
               if(timerDash() < maxDashTime)
               { 
                 timerDash();
@@ -78,14 +71,13 @@ public class PlayerMovement : MonoBehaviour {
                 samuraiDash = new Vector3(inputs.getHorizontal() , 0, inputs.getVertical() );
                 samuraiDash = transform.TransformDirection(samuraiDash);
 
-                movement(samuraiDash * dashVelocity);
+                samurai.SimpleMove(samuraiDash * dashVelocity);
               }
             else
             {   //equivale a 0
                 samuraiDash = Vector3.zero;
             }
         }
-       
    }
     //encargado de ejecutar y devolver el tiempo actual. Primero comprueba si este es mayor al tiempo maximo. Si es asi, lo devuelve a 0 
      float  timerDash()
