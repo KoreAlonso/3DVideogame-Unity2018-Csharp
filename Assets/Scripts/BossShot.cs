@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossShot : MonoBehaviour {
+public class BossShot : InstantiateShot {
 
     NavigationBoss navBoss;
     Collider playerCollider;
-
-    public Rigidbody bossSpell;
     Rigidbody cloneSpell;
     Transform pointSpawn;
 
@@ -15,11 +13,17 @@ public class BossShot : MonoBehaviour {
 
     private void Start()
     {
-        
-        pointSpawn = this.transform.Find("PointSpawnBullet");
+
         navBoss = FindObjectOfType<NavigationBoss>(); 
         playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>();
         canBossShoot = true;
+    }
+
+    protected override void setUpShotVariables()
+    {
+        //Initialize shot variables
+        this.shotSpawnPoint = this.transform.Find("PointSpawnBullet").position;
+        this.shotForceVector = transform.TransformDirection(new Vector3(0f, 5.3f, 10f));
     }
 
     private void OnTriggerStay(Collider other)
@@ -30,13 +34,8 @@ public class BossShot : MonoBehaviour {
             
                 if (navBoss.isBossHitting().Equals(true) && canBossShoot == true)
                 {
-
-                    
-                Quaternion rotation = new Quaternion(0, 0, 0, 0);
-                cloneSpell = Instantiate(bossSpell, pointSpawn.position, rotation);
-                cloneSpell.AddForce(transform.TransformDirection(new Vector3(0f, 5.3f, 10f)), ForceMode.Impulse);
+                this.shot();
                 canBossShoot = false;
-      
             }
         }
     }

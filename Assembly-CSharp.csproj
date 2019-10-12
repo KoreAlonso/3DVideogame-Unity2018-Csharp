@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\EnemyShot.cs" />
     <Compile Include="Assets\Scripts\EnergyBar.cs" />
     <Compile Include="Assets\Scripts\GetInputs.cs" />
+    <Compile Include="Assets\Scripts\InstantiateShot.cs" />
     <Compile Include="Assets\Scripts\LifeBar.cs" />
     <Compile Include="Assets\Scripts\Pjs mov_\NavigationBoss.cs" />
     <Compile Include="Assets\Scripts\Pjs mov_\NavigationEnemy.cs" />
