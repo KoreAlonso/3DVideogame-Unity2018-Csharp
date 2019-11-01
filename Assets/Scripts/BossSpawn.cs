@@ -10,17 +10,18 @@ public class BossSpawn : MonoBehaviour {
     GameObject minionInstance;
     NavigationBoss navBoss;
     
+    
 	void Start () {
+    
 
         currentCount = minCount;
         pointSpawn = this.transform;
         navBoss = FindObjectOfType<NavigationBoss>();
-        //minion = GameObject.Find("Minion");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-       
+      
         counterSpawn();
         spawn();
 	}
@@ -30,12 +31,13 @@ public class BossSpawn : MonoBehaviour {
         if (currentCount >= maxCount && navBoss.isBossStop == false)
         {
             minionInstance = Instantiate(minion.gameObject, this.transform.position, minion.transform.rotation);
+            //minionInstance.GetComponent<EnemyShot>().x = true;
         }
     }
 
     void counterSpawn()
     {
-        Debug.Log(currentCount);
+        
         if (currentCount <= maxCount)
         {
             currentCount += Time.deltaTime;

@@ -61,18 +61,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BossDamage.cs" />
+    <Compile Include="Assets\Scripts\AbstractLifeBar.cs" />
     <Compile Include="Assets\Scripts\BossShot.cs" />
     <Compile Include="Assets\Scripts\BossSpawn.cs" />
-    <Compile Include="Assets\Scripts\EnemyDamage.cs" />
+    <Compile Include="Assets\Scripts\BossSpell.cs" />
     <Compile Include="Assets\Scripts\EnemyShot.cs" />
     <Compile Include="Assets\Scripts\EnergyBar.cs" />
     <Compile Include="Assets\Scripts\GetInputs.cs" />
     <Compile Include="Assets\Scripts\InstantiateShot.cs" />
-    <Compile Include="Assets\Scripts\LifeBar.cs" />
+    <Compile Include="Assets\Scripts\LifeBarBoss.cs" />
+    <Compile Include="Assets\Scripts\LifeBarMinion.cs" />
+    <Compile Include="Assets\Scripts\LifeBarPlayer.cs" />
     <Compile Include="Assets\Scripts\Pjs mov_\NavigationBoss.cs" />
     <Compile Include="Assets\Scripts\Pjs mov_\NavigationEnemy.cs" />
     <Compile Include="Assets\Scripts\Pjs mov_\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PjShot.cs" />
+    <Compile Include="Assets\Scripts\Spell.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Bebea/Desktop/Unity/FinalProyect/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

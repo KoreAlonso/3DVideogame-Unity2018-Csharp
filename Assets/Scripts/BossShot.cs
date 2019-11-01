@@ -19,12 +19,7 @@ public class BossShot : InstantiateShot {
         canBossShoot = true;
     }
 
-    protected override void setUpShotVariables()
-    {
-        //Initialize shot variables
-        this.shotSpawnPoint = this.transform.Find("PointSpawnBullet").position;
-        this.shotForceVector = transform.TransformDirection(new Vector3(0f, 5.3f, 10f));
-    }
+   
 
     private void OnTriggerStay(Collider other)
     { 
@@ -38,6 +33,14 @@ public class BossShot : InstantiateShot {
                 canBossShoot = false;
             }
         }
+    }
+
+    protected override void setUpShotVariables()
+    {
+        //Initialize shot variables
+        this.shotSpawnPoint = this.transform.Find("PointSpawnBullet").position;
+        this.shotForceVector = transform.TransformDirection(new Vector3(0f, 5.3f, 10f));
+        
     }
 
     private void OnTriggerExit(Collider other)

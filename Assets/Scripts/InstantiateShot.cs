@@ -13,6 +13,7 @@ public abstract class InstantiateShot : MonoBehaviour {
 
     //Shot force variables
     protected Vector3 shotForceVector;
+    protected ForceMode forceMode = ForceMode.Impulse;
 
     protected abstract void setUpShotVariables();
 
@@ -20,6 +21,6 @@ public abstract class InstantiateShot : MonoBehaviour {
     {
         this.setUpShotVariables();
         cloneShot = Instantiate(baseShot, shotSpawnPoint, shotOrientation);
-        cloneShot.AddForce(shotForceVector, ForceMode.Impulse);
+        cloneShot.AddForce(shotForceVector, forceMode);
     }
 }

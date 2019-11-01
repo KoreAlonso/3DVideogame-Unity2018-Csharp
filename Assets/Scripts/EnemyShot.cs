@@ -3,17 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShot : MonoBehaviour {
+public class EnemyShot : InstantiateShot {
 
     float maxCount = 3.5f;
     float minCount= 0;
     float currentCount;
 
     Transform pointSpawn;
-    public Rigidbody spell;
     Rigidbody cloneBullet;
 
     NavigationEnemy navEnemy;
+   // public bool x;
     
 
     void Start()
@@ -26,22 +26,24 @@ public class EnemyShot : MonoBehaviour {
 
     void Update()
     {
-        bulletInstanciate();
+        spellInstanciate();
         counter();
     }
 
     //añadir la condicion de si se detecta algun personaje traidor. 
-    void  bulletInstanciate()
-    {
-        Quaternion rotation = new Quaternion(0, 0, 0, 0);
-
+    void  spellInstanciate()
+    { 
         if ( navEnemy.isMinionHitting() /*|| navEnemy.isHitTraitors()*/ == true &&  currentCount == minCount)
         {
-            cloneBullet = Instantiate(spell,pointSpawn.position, rotation);
-            cloneBullet.AddForce(transform.TransformDirection(new Vector3(0f ,3.3f,22f)), ForceMode.Impulse);
-            spell.GetComponent<MeshRenderer>().enabled = true;
+            this.shot();
         }  
     }
+    protected override void setUpShotVariables()
+        {
+            this.shotSpawnPoint = pointSpawn.position;
+            this.shotForceVector = transform.TransformDirection(new Vector3(0f, 3.3f, 22f));
+            
+        }
    
 
     float counter()
@@ -63,9 +65,7 @@ public class EnemyShot : MonoBehaviour {
         return currentCount;
     }
 
-
-
-
+    
 }
 
         
