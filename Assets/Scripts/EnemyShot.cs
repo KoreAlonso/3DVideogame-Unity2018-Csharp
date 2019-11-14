@@ -10,6 +10,7 @@ public class EnemyShot : InstantiateShot {
     float currentCount;
 
     Transform pointSpawn;
+    Vector3 forceVectorSpell;
     Rigidbody cloneBullet;
 
     NavigationEnemy navEnemy;
@@ -21,6 +22,7 @@ public class EnemyShot : InstantiateShot {
         navEnemy = FindObjectOfType<NavigationEnemy>();
         
         pointSpawn = this.transform.Find("PointSpawnBullet");
+        forceVectorSpell = new Vector3(0f, 3.3f, 22f);
         currentCount = minCount; 
     }
 
@@ -33,17 +35,12 @@ public class EnemyShot : InstantiateShot {
     //añadir la condicion de si se detecta algun personaje traidor. 
     void  spellInstanciate()
     { 
-        if ( navEnemy.isMinionHitting() /*|| navEnemy.isHitTraitors()*/ == true &&  currentCount == minCount)
+        if ( navEnemy.isMinionHitting().Equals(true) &&  currentCount == minCount)
         {
-            this.shot();
+            this.shot(transform.TransformDirection(forceVectorSpell), pointSpawn.position);
         }  
     }
-    protected override void setUpShotVariables()
-        {
-            this.shotSpawnPoint = pointSpawn.position;
-            this.shotForceVector = transform.TransformDirection(new Vector3(0f, 3.3f, 22f));
-            
-        }
+    protected override void setUpShotVariables(){}
    
 
     float counter()

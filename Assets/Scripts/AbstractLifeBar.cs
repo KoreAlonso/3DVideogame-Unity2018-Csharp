@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public abstract class AbstractLifeBar : MonoBehaviour {
 
     public float maxLife;
-    float currentLife;
-    float minLife = 0;
+    public float currentLife;
+    protected float minLife = 0;
     float shieldValue = 17;
 
      public Slider slider;
@@ -26,14 +26,16 @@ public abstract class AbstractLifeBar : MonoBehaviour {
 	}
     public void decreaseLife( float damage)
     {
-        if (currentLife - damage > minLife)
+       
+        if (currentLife - damage >= minLife)
         {
             currentLife -= damage;
-        }else
+        }
+        if(currentLife <= minLife)
         {
-            //aqui se acaba el juego,  se acabo su vida. 
             lifeOut();
         }
+        
         slider.value = currentLife;
     }
     protected abstract void lifeOut();

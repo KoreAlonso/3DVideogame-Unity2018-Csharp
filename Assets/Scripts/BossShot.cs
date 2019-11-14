@@ -7,19 +7,19 @@ public class BossShot : InstantiateShot {
     NavigationBoss navBoss;
     Collider playerCollider;
     Rigidbody cloneSpell;
-    Transform pointSpawn;
+    Transform pointSpawnSpell;
+    Vector3 forceVectorSpell;
 
     bool canBossShoot;
 
     private void Start()
     {
-
+        forceVectorSpell = new Vector3(0f, 5.3f, 10f);
+        pointSpawnSpell = this.transform.Find("PointSpawnBullet");
         navBoss = FindObjectOfType<NavigationBoss>(); 
         playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>();
         canBossShoot = true;
     }
-
-   
 
     private void OnTriggerStay(Collider other)
     { 
@@ -29,19 +29,13 @@ public class BossShot : InstantiateShot {
             
                 if (navBoss.isBossHitting().Equals(true) && canBossShoot == true)
                 {
-                this.shot();
+                this.shot(transform.TransformDirection(forceVectorSpell), pointSpawnSpell.position);
                 canBossShoot = false;
             }
         }
     }
 
-    protected override void setUpShotVariables()
-    {
-        //Initialize shot variables
-        this.shotSpawnPoint = this.transform.Find("PointSpawnBullet").position;
-        this.shotForceVector = transform.TransformDirection(new Vector3(0f, 5.3f, 10f));
-        
-    }
+   protected override void setUpShotVariables(){}
 
     private void OnTriggerExit(Collider other)
     {

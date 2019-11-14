@@ -13,7 +13,7 @@ public class BossSpell : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<AbstractLifeBar>())
+        if (other.gameObject.GetComponent<AbstractLifeBar>() && other.gameObject.layer != 10)
         {
             
             other.gameObject.GetComponent<AbstractLifeBar>().decreaseLife(damage);

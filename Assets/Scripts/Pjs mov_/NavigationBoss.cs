@@ -63,15 +63,7 @@ public class NavigationBoss : MonoBehaviour
     //detecta al jugador en eje z 
     public bool isBossHitting()
     {
-        Debug.DrawRay(this.transform.position, transform.TransformDirection(Vector3.forward * 15), Color.black);
-        if (Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), 15, player))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+       return   Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), 15, player);
 
     }
 

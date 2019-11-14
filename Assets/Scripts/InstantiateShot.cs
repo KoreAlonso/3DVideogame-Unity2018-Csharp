@@ -10,17 +10,26 @@ public abstract class InstantiateShot : MonoBehaviour {
     public Rigidbody baseShot;
     protected Vector3 shotSpawnPoint;
     Quaternion shotOrientation = new Quaternion(0, 0, 0, 0);
+  
 
     //Shot force variables
     protected Vector3 shotForceVector;
     protected ForceMode forceMode = ForceMode.Impulse;
 
+
     protected abstract void setUpShotVariables();
 
-    protected virtual void shot()
+
+    protected virtual void shot(Vector3? forceVector, Vector3? spawnPoint)
     {
+      //CONDICIONALES TERNARIOS   //  value = (condition)   ?      trueCase : falseCase;
+        Vector3 finalForceVector = (forceVector == null) ? shotForceVector : (Vector3) forceVector;
+
+        Vector3 finalSpawnPoint = (spawnPoint == null )? shotSpawnPoint : (Vector3)spawnPoint;
+
+
         this.setUpShotVariables();
-        cloneShot = Instantiate(baseShot, shotSpawnPoint, shotOrientation);
-        cloneShot.AddForce(shotForceVector, forceMode);
+        cloneShot = Instantiate(baseShot, finalSpawnPoint, shotOrientation);
+        cloneShot.AddForce(finalForceVector, forceMode);
     }
 }

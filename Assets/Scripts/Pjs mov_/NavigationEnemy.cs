@@ -50,18 +50,7 @@ public class NavigationEnemy : MonoBehaviour {
     //encargado de detectar al pj. Devuelve si o no. 
     public bool isMinionHitting() 
     {
-        Debug.DrawRay(this.transform.position, transform.TransformDirection(Vector3.forward * 10), Color.cyan);
-        if ( Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), 10, player))
-        {
-            
-           return true;
-
-        }
-        else {
-
-            return false;
-        }
-        
+        return Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), 10, player);  
     }
 
     //NO BORRAR metodo encargado de devolver si hay un traidor cerca o no. Cambiar layerMask. 

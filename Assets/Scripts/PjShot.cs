@@ -5,32 +5,36 @@ using UnityEngine;
 public class PjShot : InstantiateShot {
 
     Transform pointSpawnShuriken;
-	// Use this for initialization
+	
 	void Start () {
 
         pointSpawnShuriken = this.transform.Find("PointSpawnShuriken");
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetMouseButtonDown(0))
         {
-            shurikenInstance();
+            this.shot(transform.TransformDirection(new Vector3(0, 3, 25)), pointSpawnShuriken.position);
         }
-        if (Input.GetMouseButtonDown(0))
-            Debug.Log("Pressed primary button.");
+        if (Input.GetMouseButtonDown(1))
+        {
+            this.tripleShot();
+        }
+
     }
+
+    protected override void setUpShotVariables() { }
     
-    void shurikenInstance()
+
+    void tripleShot()
     {
-        this.shot();
-        Debug.Log(ForceMode.Impulse.GetType());
+        shot(transform.TransformDirection(new Vector3(0, 3, 25)), pointSpawnShuriken.position);
+        shot(transform.TransformDirection(new Vector3(-5, 3, 25)), pointSpawnShuriken.position + new Vector3(1,0,0) );
+        shot(transform.TransformDirection(new Vector3(5, 3, 25)), pointSpawnShuriken.position + new Vector3(-1, 0, 0));
     }
-    protected override void setUpShotVariables()
-    {
-        this.shotSpawnPoint = pointSpawnShuriken.position;
-        this.shotForceVector = transform.TransformDirection(new Vector3(0, 0, 30));
-       // this.forceMode = ForceMode.Impulse;
-    }
+
+
+
 
 }
