@@ -30,6 +30,7 @@ public abstract class InstantiateShot : MonoBehaviour {
 
         this.setUpShotVariables();
         cloneShot = Instantiate(baseShot, finalSpawnPoint, shotOrientation);
+        if(this.gameObject.layer != LayerMask.NameToLayer("Boss")) cloneShot.gameObject.GetComponent<Spell>().layerOrigin = this.gameObject.layer;
         cloneShot.AddForce(finalForceVector, forceMode);
     }
 }

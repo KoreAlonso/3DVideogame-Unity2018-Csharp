@@ -3,24 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LifeBarMinion : AbstractLifeBar {
-    GameObject minion;
-    private void Awake()
-    {
-        minion = this.gameObject;
-        minion.layer = LayerMask.NameToLayer("NotAlly");
-    }
 
+   
 
-    protected override void lifeOut()
+    private void Start()
     {
-        if (minion.layer == 11 && this.currentLife == minLife) {
-            minion.layer = LayerMask.NameToLayer("Player");
-            this.currentLife = this.maxLife;
-        }
-        else if(minion.layer == 9 && this.currentLife == minLife)
+        base.Start();
+        this.gameObject.layer = randomLayer();
+        if (this.gameObject.layer == LayerMask.NameToLayer("Dmg"))
         {
-            minion.layer = LayerMask.NameToLayer("NotAlly");
-            this.currentLife = this.maxLife;
+            MinionsType.dmgMinions.Add(this.gameObject);
         }
+        else
+        {
+            MinionsType.healerMinions.Add(this.gameObject);
+        }  
     }
+   private void Update()
+    {
+        slider.value = currentLife;
+        lifeOut();
+
+    }
+    protected override void lifeOut()
+    {   
+        //si no son aliados se convierten en aliados, si son aliados se convierten en healers
+        
+        if (this.gameObject.layer == LayerMask.NameToLayer("Dmg") && this.currentLife <= minLife || this.gameObject.layer == LayerMask.NameToLayer("Healer") && this.currentLife <= minLife) {
+            this.gameObject.layer = LayerMask.NameToLayer("Player");
+            this.currentLife = this.maxLife;
+
+            MinionsType.allyMinions.Add(this.gameObject);
+            MinionsType.dmgMinions.Remove(this.gameObject);
+            MinionsType.healerMinions.Remove(this.gameObject);
+
+        }
+
+        if (this.gameObject.layer == LayerMask.NameToLayer("Player") && this.currentLife <= minLife )
+        {  
+            this.gameObject.layer = LayerMask.NameToLayer("Healer");
+            this.currentLife = this.maxLife;
+
+            MinionsType.healerMinions.Add(this.gameObject);
+            MinionsType.allyMinions.Remove(this.gameObject);
+        }
+        
+    }
+
+    int randomLayer()
+    {
+        int randomLayer = Random.value >= 0.5 ? LayerMask.NameToLayer("Dmg") : LayerMask.NameToLayer("Healer");
+        Debug.Log(randomLayer);
+        
+       return  randomLayer;
+    } 
 }

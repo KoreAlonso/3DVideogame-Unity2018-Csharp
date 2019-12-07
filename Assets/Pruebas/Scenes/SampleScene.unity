@@ -579,7 +579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 748360642}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PointSpawnBullet
   m_TagString: PointSpawn
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -600,48 +600,6 @@ Transform:
   m_Father: {fileID: 1437249287}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &896073609
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4501956587419220, guid: 6ac3036495c57f644b07e0cf9ad0d8ab, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501956587419220, guid: 6ac3036495c57f644b07e0cf9ad0d8ab, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501956587419220, guid: 6ac3036495c57f644b07e0cf9ad0d8ab, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501956587419220, guid: 6ac3036495c57f644b07e0cf9ad0d8ab, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501956587419220, guid: 6ac3036495c57f644b07e0cf9ad0d8ab, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501956587419220, guid: 6ac3036495c57f644b07e0cf9ad0d8ab, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501956587419220, guid: 6ac3036495c57f644b07e0cf9ad0d8ab, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501956587419220, guid: 6ac3036495c57f644b07e0cf9ad0d8ab, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6ac3036495c57f644b07e0cf9ad0d8ab, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &937157829
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minion: {fileID: 195797307718429436, guid: 6ac3036495c57f644b07e0cf9ad0d8ab, type: 2}
+  maxMinions: 20
 --- !u!1 &991298226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,7 +1196,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1288,7 +1247,7 @@ GameObject:
   - component: {fileID: 1437249287}
   - component: {fileID: 1437249289}
   - component: {fileID: 1437249288}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DetectionArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1717,6 +1676,7 @@ GameObject:
   - component: {fileID: 1827539575}
   - component: {fileID: 1827539572}
   - component: {fileID: 1827539574}
+  - component: {fileID: 1827539573}
   m_Layer: 10
   m_Name: Boss
   m_TagString: Boss
@@ -1737,8 +1697,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLife: 40
-  currentLife: 0
   slider: {fileID: 2115094368}
+  currentLife: 0
+--- !u!114 &1827539573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1827539571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0542e6e2ef21f944a838c221a75b586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1827539574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2146,8 +2117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLife: 140
-  currentLife: 0
   slider: {fileID: 2103463757}
+  currentLife: 0
 --- !u!114 &2103573871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2299,8 +2270,8 @@ RectTransform:
   m_Father: {fileID: 1247235909}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2398,9 +2369,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2111563220}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 40
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 40
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

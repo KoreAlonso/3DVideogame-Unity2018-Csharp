@@ -6,24 +6,18 @@ using UnityEngine.UI;
 public abstract class AbstractLifeBar : MonoBehaviour {
 
     public float maxLife;
-    public float currentLife;
     protected float minLife = 0;
     float shieldValue = 17;
 
      public Slider slider;
+    public float currentLife;
 
-	void Start () {
-        slider.maxValue = maxLife;
+    protected void Start()
+    {
         currentLife = maxLife;
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        slider.maxValue = maxLife;
+    }
 
-        slider.value = currentLife;
-        
-	}
     public void decreaseLife( float damage)
     {
        

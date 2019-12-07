@@ -8,11 +8,11 @@ public class BossSpawn : MonoBehaviour {
     Transform pointSpawn;
     public NavMeshAgent minion;
     GameObject minionInstance;
+    int currentMinions = 0;
+    public int maxMinions = 1;
     NavigationBoss navBoss;
-    
-    
+
 	void Start () {
-    
 
         currentCount = minCount;
         pointSpawn = this.transform;
@@ -24,20 +24,23 @@ public class BossSpawn : MonoBehaviour {
       
         counterSpawn();
         spawn();
-	}
+    }
 
     void spawn()
     {
-        if (currentCount >= maxCount && navBoss.isBossStop == false)
+        
+        if (currentCount >= maxCount && navBoss.isBossStop == false && currentMinions < maxMinions)
         {
             minionInstance = Instantiate(minion.gameObject, this.transform.position, minion.transform.rotation);
-            //minionInstance.GetComponent<EnemyShot>().x = true;
+            currentMinions++;
         }
+           
+   
     }
 
     void counterSpawn()
     {
-        
+
         if (currentCount <= maxCount)
         {
             currentCount += Time.deltaTime;
@@ -48,4 +51,6 @@ public class BossSpawn : MonoBehaviour {
             currentCount = minCount;
         }
     }
+
+   
 }

@@ -28,8 +28,8 @@ TagManager:
   - PostProcessing
   - Player
   - Boss
-  - NotAlly
-  - 
+  - Dmg
+  - Healer
   - 
   - 
   - 

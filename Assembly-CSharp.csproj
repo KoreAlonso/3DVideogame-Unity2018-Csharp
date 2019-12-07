@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\LifeBarBoss.cs" />
     <Compile Include="Assets\Scripts\LifeBarMinion.cs" />
     <Compile Include="Assets\Scripts\LifeBarPlayer.cs" />
+    <Compile Include="Assets\Scripts\MinionsType.cs" />
     <Compile Include="Assets\Scripts\Pjs mov_\NavigationBoss.cs" />
     <Compile Include="Assets\Scripts\Pjs mov_\NavigationEnemy.cs" />
     <Compile Include="Assets\Scripts\Pjs mov_\PlayerMovement.cs" />
