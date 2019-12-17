@@ -30,6 +30,7 @@ public class NavigationBoss : MonoBehaviour
         bossMovement();   
     }
 
+    //se mueve aleatoriamente. si llega a su punto de destino se ejecuta(pointStop)
     void bossMovement()
     {
         boss.destination = randomDirection; 
@@ -41,6 +42,7 @@ public class NavigationBoss : MonoBehaviour
   
     }
 
+    //Comienza el contador. Si actualmente es menor a maxCount, el boss se queda en la posicion. Si es igual a max, busca una nueva posicion. 
     void pointStop()
     {
         counter();
@@ -60,13 +62,14 @@ public class NavigationBoss : MonoBehaviour
         }         
     }
 
-    //detecta al jugador en eje z 
+    //devuelve true si el player esta a rango de disparo.
     public bool isBossHitting()
     {
-       return   Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), 15, player);
+        Debug.Log("isBosshitting");
+        return   Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), 15, player);
+        
 
     }
-
 
     void counter()
     { 

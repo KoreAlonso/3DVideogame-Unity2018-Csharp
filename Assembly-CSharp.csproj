@@ -61,23 +61,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AbstractLifeBar.cs" />
-    <Compile Include="Assets\Scripts\BossShot.cs" />
-    <Compile Include="Assets\Scripts\BossSpawn.cs" />
-    <Compile Include="Assets\Scripts\BossSpell.cs" />
-    <Compile Include="Assets\Scripts\EnemyShot.cs" />
-    <Compile Include="Assets\Scripts\EnergyBar.cs" />
-    <Compile Include="Assets\Scripts\GetInputs.cs" />
-    <Compile Include="Assets\Scripts\InstantiateShot.cs" />
-    <Compile Include="Assets\Scripts\LifeBarBoss.cs" />
-    <Compile Include="Assets\Scripts\LifeBarMinion.cs" />
-    <Compile Include="Assets\Scripts\LifeBarPlayer.cs" />
-    <Compile Include="Assets\Scripts\MinionsType.cs" />
+    <Compile Include="Assets\Scripts\LifeSystem\AbstractLifeBar.cs" />
+    <Compile Include="Assets\Scripts\LifeSystem\LifeBarBoss.cs" />
+    <Compile Include="Assets\Scripts\LifeSystem\LifeBarMinion.cs" />
+    <Compile Include="Assets\Scripts\LifeSystem\LifeBarPlayer.cs" />
     <Compile Include="Assets\Scripts\Pjs mov_\NavigationBoss.cs" />
     <Compile Include="Assets\Scripts\Pjs mov_\NavigationEnemy.cs" />
     <Compile Include="Assets\Scripts\Pjs mov_\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\PjShot.cs" />
-    <Compile Include="Assets\Scripts\Spell.cs" />
+    <Compile Include="Assets\Scripts\SpellsBehavior\BossSpell.cs" />
+    <Compile Include="Assets\Scripts\SpellsBehavior\Spell.cs" />
+    <Compile Include="Assets\Scripts\SpellsShots\BossShot.cs" />
+    <Compile Include="Assets\Scripts\SpellsShots\InstantiateShot.cs" />
+    <Compile Include="Assets\Scripts\SpellsShots\MinionShot.cs" />
+    <Compile Include="Assets\Scripts\SpellsShots\PjShot.cs" />
+    <Compile Include="Assets\Scripts\Tools\BossSpawn.cs" />
+    <Compile Include="Assets\Scripts\Tools\EnergyBar.cs" />
+    <Compile Include="Assets\Scripts\Tools\GetInputs.cs" />
+    <Compile Include="Assets\Scripts\Tools\MinionsType.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
