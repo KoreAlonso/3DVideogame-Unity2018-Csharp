@@ -16,6 +16,7 @@ TagManager:
   - PointSpawn
   - Bullets
   - terrain
+  - Item
   layers:
   - Default
   - TransparentFX

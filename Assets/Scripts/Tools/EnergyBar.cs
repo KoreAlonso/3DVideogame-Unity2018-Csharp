@@ -9,7 +9,7 @@ public class EnergyBar : MonoBehaviour {
     public float totalValue = 100;
     public float currentValue;
 
-    float valueIncrease = 0.7f;
+    public float valueIncrease = 0.7f, defaultValueIncrease = 0.7f;
 
     Slider slider;
     public static EnergyBar sharedInstance;

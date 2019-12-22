@@ -22,12 +22,17 @@ public class PlayerMovement : MonoBehaviour
     public float currentDashTime;
     public float maxDashTime = 0.3f;
     float dashCost = 8.5f;
+    public float minDuration = 0, currentDuration, maxDuration = 2.5f;
+    PjShot pjShot;
+    bool isItemActive = false;
 
     void Start()
     {
         samurai = GetComponent<CharacterController>();
         inputs = FindObjectOfType<GetInputs>();
         currentDashTime = minDashTime;
+        pjShot = FindObjectOfType<PjShot>();
+        currentDuration = minDuration;
     }
 
     void Update()
@@ -35,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
         rotate();
         payDash();
         movement();
+        if (isItemActive)
+        {
+            counterDuration();
+        }
     }
 
     //encargado del movimiento WASD
@@ -102,6 +111,64 @@ public class PlayerMovement : MonoBehaviour
         return currentDashTime;
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {   
+        
+
+        if (other.gameObject.Equals(RandomItem.sharedInstance.instanceItem) && itemDuration())
+        {   
+            // RandomItem.sharedInstance.currentDuration += Time.deltaTime;
+            if (Random.value < 0.5)
+            {
+                pjShot.maxCount = RandomItem.sharedInstance.itemShotVelocity;
+            
+
+            }
+            else
+            {
+                EnergyBar.sharedInstance.valueIncrease = RandomItem.sharedInstance.itemEnergyIncrease;
+            }
+            isItemActive = true;
+            Destroy(RandomItem.sharedInstance.instanceItem);
+            RandomItem.sharedInstance.maxTime = Random.Range(0, 120);
+            RandomItem.sharedInstance.currentTime = RandomItem.sharedInstance.minTime;
+        }
+        
+    }
+   
+    public bool itemDuration()
+    {
+        if (currentDuration == minDuration)
+        {
+            counterDuration();
+            Debug.Log("esta con item");
+
+            return true;
+        }
+        else
+        {
+            Debug.Log("esta sin item");
+            return false;
+        }
+    }
+    void counterDuration()
+    {
+        
+
+        if (currentDuration >= maxDuration)
+        {
+            currentDuration = minDuration;
+            isItemActive = false;
+            pjShot.maxCount = pjShot.defaultCount;
+            EnergyBar.sharedInstance.valueIncrease = EnergyBar.sharedInstance.defaultValueIncrease;
+        }
+        else
+        {
+            currentDuration += Time.deltaTime;
+        }
+        Debug.Log(currentDuration);
+    }
 
 
 }

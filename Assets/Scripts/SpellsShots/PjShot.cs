@@ -7,17 +7,20 @@ public class PjShot : InstantiateShot {
 
     Transform pointSpawnShuriken;
 
-    float currentCount, minCount = 0,  maxCount = 1.1f;
+    public float currentCount, minCount = 0,  maxCount = 1.1f, defaultCount= 1.1f;
     float costTripleShot = 5;
+   
+
 
     void Start () {
         pointSpawnShuriken = this.transform.Find("PointSpawnShuriken");
         currentCount = maxCount;
+        
     }
 
 	void Update () {
         
-        counter();
+        shotCounter();
         //solo puede disparar cuando el contador este en maxCount. Cuando se dispare, se iguala a minCount para que vuelva a ejecutarse la condicion.
         if (Input.GetMouseButtonDown(0) && currentCount == maxCount )
         {
@@ -40,7 +43,7 @@ public class PjShot : InstantiateShot {
         shot(transform.TransformDirection(new Vector3(5, 3, 25)), pointSpawnShuriken.position + new Vector3(-1, 0, 0));
     }
     
-    float counter()
+    float shotCounter()
     {
         //contador que se para al llegar a maxCount.
         if (minCount <= currentCount)
@@ -54,6 +57,5 @@ public class PjShot : InstantiateShot {
         
         return currentCount;
     }
-
 
 }
