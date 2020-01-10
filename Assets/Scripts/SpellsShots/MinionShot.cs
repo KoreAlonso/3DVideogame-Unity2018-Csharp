@@ -6,7 +6,7 @@ using UnityEngine;
 //hereda de InstantiateShot.Encargado del disparo de Minions.
 public class MinionShot : InstantiateShot {
     //variables contador
-    float maxCount = 3.5f;
+    float maxCount = 2.5f;
     float minCount= 0;
     float currentCount;
 

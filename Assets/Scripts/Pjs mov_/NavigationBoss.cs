@@ -15,14 +15,16 @@ public class NavigationBoss : MonoBehaviour
     public LayerMask player;
     public Transform playerTransf;
 
-    public bool isBossStop = false;
+    public bool isBossStop;
 
+    RaycastHit hitBoss;
     void Start()
     {
         boss = GetComponent<UnityEngine.AI.NavMeshAgent>();
         randomDirection = new Vector3(Random.Range(0, 100), 0, Random.Range(0, 100));
         playerTransf = GameObject.FindGameObjectWithTag("Player").transform;
         currentCount = startCount;
+        isBossStop = false;
     }
 
     void Update()
@@ -50,23 +52,25 @@ public class NavigationBoss : MonoBehaviour
         if(currentCount < maxCount)
         {
              stopBoss = Vector3.zero;
-             boss.destination = stopBoss;            
-            isBossStop = true;
+             this.boss.destination = stopBoss;            
+            this.isBossStop = true;
         }
 
-        if (currentCount == maxCount)
+        if (currentCount >= maxCount)
         {
              randomDirection = new Vector3(Random.Range(0, 100), 0, Random.Range(0, 100)); 
-             currentCount = startCount;
-            isBossStop = false;
-        }         
+             this.currentCount = startCount;
+             this.isBossStop = false;
+        }
+       
+       
     }
 
     //devuelve true si el player esta a rango de disparo.
     public bool isBossHitting()
     {
-        Debug.Log("isBosshitting");
-        return   Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), 15, player);
+        
+        return   Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), 50, player) ;
         
 
     }
@@ -83,6 +87,11 @@ public class NavigationBoss : MonoBehaviour
             currentCount = maxCount;
         }
        
+    }
+
+    public void resetCounter()
+    {
+        currentCount = maxCount;
     }
 }
 

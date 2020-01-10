@@ -7,10 +7,15 @@ public class LifeBarPlayer : AbstractLifeBar {
     float shieldValue = 20;
     float shieldCost = 40;
 
-    protected override void lifeOut(){}
+    protected override void lifeOut(){
+        GameManager.sharedInstance.gameOver();
+    }
     private void Update()
     {
-        shield(); 
+        if (MoveCamera.sharedInstance.transform.parent == MoveCamera.sharedInstance.target.transform)
+        {
+            shield();
+        }
 
     }
 

@@ -61,6 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GameScene\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GameScene\ViewGame.cs" />
     <Compile Include="Assets\Scripts\LifeSystem\AbstractLifeBar.cs" />
     <Compile Include="Assets\Scripts\LifeSystem\LifeBarBoss.cs" />
     <Compile Include="Assets\Scripts\LifeSystem\LifeBarMinion.cs" />
@@ -75,10 +77,15 @@
     <Compile Include="Assets\Scripts\SpellsShots\MinionShot.cs" />
     <Compile Include="Assets\Scripts\SpellsShots\PjShot.cs" />
     <Compile Include="Assets\Scripts\Tools\BossSpawn.cs" />
+    <Compile Include="Assets\Scripts\Tools\CreateJsonTest.cs" />
     <Compile Include="Assets\Scripts\Tools\EnergyBar.cs" />
+    <Compile Include="Assets\Scripts\Tools\GameDifficulty.cs" />
+    <Compile Include="Assets\Scripts\Tools\GameTimer.cs" />
     <Compile Include="Assets\Scripts\Tools\GetInputs.cs" />
     <Compile Include="Assets\Scripts\Tools\MinionsType.cs" />
+    <Compile Include="Assets\Scripts\Tools\MoveCamera.cs" />
     <Compile Include="Assets\Scripts\Tools\RandomItem.cs" />
+    <Compile Include="Assets\Scripts\Tools\Record.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

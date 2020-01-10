@@ -28,7 +28,7 @@ public abstract class InstantiateShot : MonoBehaviour {
         cloneShot = Instantiate(baseShot, finalSpawnPoint, shotOrientation);
 
         //si este no esta en la capa boss, cloneShot obtiene la layer de su origen. 
-        if(this.gameObject.layer != LayerMask.NameToLayer("Boss")) cloneShot.gameObject.GetComponent<Spell>().layerOrigin = this.gameObject.layer;
+        if(this.gameObject.layer != LayerMask.NameToLayer("Boss")) this.cloneShot.gameObject.GetComponent<Spell>().layerOrigin = this.gameObject.layer;
         cloneShot.AddForce(finalForceVector, forceMode);
     }
 }

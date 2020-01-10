@@ -17,6 +17,10 @@ TagManager:
   - Bullets
   - terrain
   - Item
+  - Victory
+  - Defeat
+  - recordText
+  - timerText
   layers:
   - Default
   - TransparentFX

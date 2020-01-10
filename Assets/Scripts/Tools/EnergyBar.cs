@@ -13,10 +13,11 @@ public class EnergyBar : MonoBehaviour {
 
     Slider slider;
     public static EnergyBar sharedInstance;
-
- 
-
-	void Start () {
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+    void Start () {
         slider = this.GetComponent<Slider>();
         sharedInstance = this;
 

@@ -17,9 +17,18 @@ public class RandomItem : MonoBehaviour
 
     public float minTime = 0, currentTime, maxTime;
 
+    float limit, easyLimit = 0.4f, normalLimit = 0.35f, hardLimit = 0.15f;
+    private void Awake()
+    {
+        limit = GameDifficulty.assignDifficulty<float>(easyLimit, normalLimit, hardLimit);
+       
+            DontDestroyOnLoad(this);
+        
+    }
     void Start()
     {
         sharedInstance = this;
+        
         item = GameObject.FindGameObjectWithTag("Item");
         positionItem = new Vector3(Random.Range(0, 100), 1, Random.Range(0, 100));
         rotationItem = new Quaternion(0, 0, 25, 0);
@@ -37,7 +46,7 @@ public class RandomItem : MonoBehaviour
 
     void spawnItem()
     {
-        if (lifeBarPlayer.currentLife < 0.25 * lifeBarPlayer.maxLife && currentTime == minTime)
+        if (lifeBarPlayer.currentLife < limit * lifeBarPlayer.maxLife && currentTime == minTime)
         {
             currentTime += Time.deltaTime;
             if (currentTime >= maxTime && instanceItem == null)
@@ -46,5 +55,6 @@ public class RandomItem : MonoBehaviour
             }
         }
     }
+  
 
 }

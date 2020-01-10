@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     float velocity = 4;
     float dashVelocity = 25;
     float rotateVelocity = 1;
-
+    float altitude;
     //Variable para acceder a la Clase GetInputs
     GetInputs inputs;
 
@@ -33,11 +33,16 @@ public class PlayerMovement : MonoBehaviour
         currentDashTime = minDashTime;
         pjShot = FindObjectOfType<PjShot>();
         currentDuration = minDuration;
+        altitude = this.transform.position.y;
     }
 
     void Update()
-    {
-        rotate();
+    {   
+        if(MoveCamera.sharedInstance.transform.parent == MoveCamera.sharedInstance.target.transform)
+        {
+            rotate();
+        }
+        
         payDash();
         movement();
         if (isItemActive)
@@ -45,7 +50,15 @@ public class PlayerMovement : MonoBehaviour
             counterDuration();
         }
     }
+    private void FixedUpdate()
+    {
+        resetAltitude();
+    }
+    void resetAltitude()
+    {
 
+        transform.position = new Vector3(transform.position.x, altitude, transform.position.z);
+    }
     //encargado del movimiento WASD
     void movement()
     {
@@ -70,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
     bool isDashing = false;
     void payDash()
     {
-        if ((Input.GetKeyDown(KeyCode.Space) && EnergyBar.sharedInstance.currentValue > dashCost)  || isDashing == true)
+        if ((Input.GetKeyDown(KeyCode.F) && EnergyBar.sharedInstance.currentValue > dashCost)  || isDashing == true)
         {
             dash();  
         }
@@ -102,9 +115,9 @@ public class PlayerMovement : MonoBehaviour
     //encargado de ejecutar y devolver currentDash.  
     float timerDash()
     {
-        currentDashTime = currentDashTime + 1 * Time.deltaTime;
+        currentDashTime = currentDashTime + Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space) && currentDashTime >= maxDashTime)
+        if (Input.GetKeyDown(KeyCode.F) && currentDashTime >= maxDashTime)
         {
             currentDashTime = minDashTime;
         }

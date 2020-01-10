@@ -7,7 +7,16 @@ public class GetInputs : MonoBehaviour {
 
     float horizontal;
     float vertical;
-  
+   public static  GetInputs sharedInstance;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+    private void Start()
+    {
+        sharedInstance = this;
+    }
     void Update () {
 
         getInput();  

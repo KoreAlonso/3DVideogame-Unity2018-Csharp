@@ -15,36 +15,48 @@ public class BossShot : InstantiateShot {
 
     private void Start()
     {
-        navBoss = FindObjectOfType<NavigationBoss>(); 
+        navBoss = this.gameObject.GetComponentInParent<NavigationBoss>(); 
         playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>();
 
-        forceVectorSpell = new Vector3(0f, 5.3f, 8f);
+        forceVectorSpell = new Vector3(0f,- 4f, 16f);
         pointSpawnSpell = this.transform.Find("PointSpawnBullet");
 
         canBossShoot = true;
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.Equals(playerCollider) && navBoss.isBossStop == true)
+        {
+            this.navBoss.boss.transform.LookAt(navBoss.playerTransf);
+        }
+    }
     private void OnTriggerStay(Collider other)
 
     {   //si esta player en colliderBoss y este esta quieto, lo mira.
-        if (other.Equals(playerCollider) && navBoss.isBossStop == true)
-        {   
-            navBoss.boss.transform.LookAt(navBoss.playerTransf);
+        if (/*other.Equals(playerCollider) &&*/ navBoss.isBossStop == true)
+        {
+          this.navBoss.boss.transform.LookAt(navBoss.playerTransf);
+            Debug.Log("miro al pj");
+            
 
                 //y si esta a rango, dispara (hacia, desde) 
             if (navBoss.isBossHitting().Equals(true) && canBossShoot == true)
-            {
+            {   
                 this.shot(transform.TransformDirection(forceVectorSpell), pointSpawnSpell.position);
+                Debug.Log("disparo y no puedo disparar");
                 canBossShoot = false;
-
-               
+                navBoss.resetCounter();
             }
         }
         //Si vuelve a moverse, puede volver a disparar
         if (navBoss.isBossStop == false)
-                {
+                { 
+            Debug.Log(  "puede disparar");
                     canBossShoot = true;
                 }
+
+      
+       // Debug.Log(navBoss.isBossHitting() + " esta a rango");
     }
 
 }

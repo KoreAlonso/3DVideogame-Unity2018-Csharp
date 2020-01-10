@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class MinionsType : MonoBehaviour
 {
-    public static List<GameObject> dmgMinions = new List<GameObject>(60);
-    public static List<GameObject> allyMinions = new List<GameObject>(60);
-    public static List<GameObject> healerMinions = new List<GameObject>(60);
+    public static List<GameObject> dmgMinions = new List<GameObject>();
+    public static List<GameObject> allyMinions = new List<GameObject>();
+    public static List<GameObject> healerMinions = new List<GameObject>();
+
+    public static bool winConditionMinion= false;
 
     static Transform transformPlayer;
 
     private void Awake()
     {
         transformPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
+    private void Update()
+    {
+        checkWinCondition();
+
     }
 
     //encargado de devolver el objetivo. Este varia segun la capa a la que pertenezca el argumento. 
@@ -92,4 +99,9 @@ public class MinionsType : MonoBehaviour
         }
         return target;
     }
+    void checkWinCondition() {
+
+            winConditionMinion = dmgMinions.Count == 0 && healerMinions.Count == 0;
+    }
+        
 }

@@ -28,10 +28,10 @@ public class NavigationEnemy : MonoBehaviour
         //si la distancia ente este objeto y su target es menor al max, lo mira. 
         if (Vector3.Distance(this.transform.position, destination.position) <= maxRangeDistance)
         {
-            enemy.transform.LookAt(destination);
+            this.enemy.transform.LookAt(destination);
 
             //si es aliado, persigue al jugador, sino al target.     
-            enemy.destination = this.gameObject.layer == LayerMask.NameToLayer("Player") ? samuraiTransform.position : destination.position;
+            this.enemy.destination = this.gameObject.layer == LayerMask.NameToLayer("Player") ? samuraiTransform.position : destination.position;
         }
     }
     //encargado de devolver true si estan a rango de disparo. 

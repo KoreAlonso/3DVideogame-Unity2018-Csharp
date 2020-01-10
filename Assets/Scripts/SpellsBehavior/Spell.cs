@@ -32,7 +32,7 @@ public class Spell : MonoBehaviour {
         else
         {
             Destroy(this.gameObject,1.5f);
-            Debug.Log("disparo fallido");
+           
         }   
         //se destruye con el impacto, sino, al 1.5s
          Destroy(this.gameObject);

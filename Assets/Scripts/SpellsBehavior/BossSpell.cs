@@ -20,8 +20,7 @@ public class BossSpell : MonoBehaviour {
             
             other.gameObject.GetComponent<AbstractLifeBar>().decreaseLife(damage);
         }
-       
-        
+
     }
     //cuando impacta con el suelo, se destruye. 
     private void OnTriggerExit(Collider other)
@@ -30,6 +29,7 @@ public class BossSpell : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+
     }
 
    

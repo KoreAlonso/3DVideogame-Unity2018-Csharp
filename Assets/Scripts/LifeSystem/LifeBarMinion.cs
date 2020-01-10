@@ -54,7 +54,7 @@ public class LifeBarMinion : AbstractLifeBar {
     int randomLayer()
     {
         int randomLayer = Random.value >= 0.5 ? LayerMask.NameToLayer("Dmg") : LayerMask.NameToLayer("Healer");
-        Debug.Log(randomLayer);
+       
         
        return  randomLayer;
     } 
